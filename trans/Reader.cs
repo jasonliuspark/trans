@@ -3,10 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExcelDataReader;
+using System.IO;
 
 namespace trans
 {
-    class Reader
+    public class Reader
     {
+        public Reader()
+
+        {
+
+            
+
+
+        }
+
+
     }
 }
