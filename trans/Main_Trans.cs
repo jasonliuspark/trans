@@ -12,8 +12,8 @@ namespace trans
 {
     public partial class Main_Trans : Form
     {
-        static string excel_filename;
-        static string target_filename;
+        public static string excel_filename;
+        public static string target_filename;
         public Main_Trans()
         {
             InitializeComponent();

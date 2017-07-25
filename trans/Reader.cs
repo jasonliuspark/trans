@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 using ExcelDataReader;
 using System.IO;
 
+
+
 namespace trans
 {
     public class Reader
     {
-        public Reader()
+        public Reader(string excel_path)
 
         {
-
-            
+            var stream = File.Open(excel_path,FileMode.Open,FileAccess.Read) ; 
+            var reader = ExcelReaderFactory.cre
 
 
         }
