@@ -15,8 +15,12 @@ namespace trans
         public Reader(string excel_path)
 
         {
-            var stream = File.Open(excel_path,FileMode.Open,FileAccess.Read) ; 
-            var reader = ExcelReaderFactory.cre
+            var stream = File.Open(excel_path,FileMode.Open,FileAccess.Read) ;
+            var reader = ExcelReaderFactory.CreateReader(stream);
+            var reader.AsDataSet();
+
+            //result.Tables.
+            
 
 
         }

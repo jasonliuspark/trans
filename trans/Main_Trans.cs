@@ -66,5 +66,11 @@ namespace trans
 
 
         }
+
+        private void Transfer_Button_Click(object sender, EventArgs e)
+        {
+
+            Reader read = new Reader(target_filename);
+        }
     }
 }
