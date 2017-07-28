@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,7 +61,7 @@ namespace trans
                 target_filename = open_target_file.FileName;
 
                 target_path.Text = target_filename;
-
+               // string filename = Path.GetFileName(target_path.Text);
 
             }
 
@@ -70,7 +71,17 @@ namespace trans
         private void Transfer_Button_Click(object sender, EventArgs e)
         {
 
-            Reader read = new Reader(target_filename);
+            Reader read = new Reader(excel_path.Text,target_path.Text);
+          /*  string [] output_result = new string[2];
+            output_result = read.ExcelReader(excel_path.Text);
+            read.ReadAndReplace(
+                output_result[0],
+                output_result[1],
+                target_path.Text,                    
+                true
+                );
+            */
+          
         }
     }
 }
