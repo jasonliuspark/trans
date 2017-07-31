@@ -31,16 +31,16 @@ namespace trans
                     if (reader.GetValue(0) != null && reader.GetValue(1) != null)
                     {
                        string old_value = reader.GetValue(0).ToString();
-                       string new_value = reader.GetValue(1).ToString();
+                       string new_value = standarize_pattern( reader.GetValue(1).ToString());
                        // System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
                         ReadAndReplace(
                          //output[0],
                          //output[1],
-                        standarize_pattern( old_value),
-                        standarize_pattern( new_value ),
-                         //standarize(old_value,new_value),
-                         //reader.GetValue(0).ToString(),
-                        // reader.GetValue(1).ToString(),
+                         old_value,
+                       standarize( old_value, new_value),
+                       //  standarize(old_value,new_value),
+                        // reader.GetValue(0).ToString(),
+                         //reader.GetValue(1).ToString(),
                           target_path
                           //true
                           );
@@ -57,19 +57,24 @@ namespace trans
         }
         private string standarize_pattern(string quo)
         {
-            
-            string buffer = quo;
-            while (buffer.Substring(0,1)==" ")
-            {
+            string buffer = quo.Trim();
 
-                buffer = quo.Remove(0,1);
+            if (buffer!=""&&buffer.Substring(0, 1) != "\'")
+            //string buffer = quo.Trim();
+            {
+                if (buffer.Contains("\'"))
+                { buffer = buffer.Insert(0, " \'"); }
+                else
+                {
+                    buffer = buffer.Insert(0," ");
+                }
             }
 
             return buffer;
         }
         private string standarize(string standard, string data)
         {
-            string s = "";
+            string s = data;
             if (standard.Contains("\"") && data.Contains("\'"))
             {
 
@@ -114,20 +119,20 @@ namespace trans
         private void ReadAndReplace(string word, string replacement, string filePath)
         {
 
-           // var fileText = "";
+            var fileText = "";
             string con = "";
             // int row_count = 0;
-           bool value_changed = false;
+            //bool value_changed = false;
             //bool sr_closed=false;
-
+            //int w_count = word.Count();
             //using (var reader = new StreamReader(filePath))
-            //    fileText = reader.ReadToEnd().Replace(word,  replacement );
+             //fileText = reader.ReadToEnd().Replace(word, replacement);
 
             //using (var writer = new StreamWriter(filePath + (overrideFile ? "" : "out")))
-            //    writer.Write(fileText);
+               // writer.Write(fileText);
 
-            //using (var writer = new StreamWriter(filePath))
-            //    writer.Write(fileText);
+           // using (var writer = new StreamWriter(filePath))
+               // writer.Write(fileText);
 
             //var reader2 = new StreamReader(filePath);
             // FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
@@ -139,28 +144,28 @@ namespace trans
             //}
             //System.Diagnostics.Trace.WriteLine(row_count);
 
-            string text="";
+            //string text="";
             int w_count = word.Count();
-            int r_count = replacement.Count();
+           // int r_count = replacement.Count();
             StreamReader sr = new StreamReader(filePath);
-            while ((con = sr.ReadLine())!=null)
-                {                   
-                
-                if (con.Contains(word) && value_changed == false)
+            //while ((con = sr.ReadLine())!=null)
+            //{                   
+                con = sr.ReadToEnd();
+                if (con.Contains(word))
                 {
-                   int con_index= con.LastIndexOf(word);
-                   // con = con.Replace(word, replacement);
+                   int con_index= con.IndexOf(word);
+            //        con = con.Replace(word, replacement);
                     con = con.Remove(con_index,w_count);
                     con = con.Insert(con_index,replacement);
-                    value_changed = true;
+                    //value_changed = true;
 
-                }
-                text += con+"\r\n";
+               }
                 
-            }
+                
+            //}
             sr.Close();
             using (var writer = new StreamWriter(filePath))
-                writer.Write(text);
+                writer.Write(con);
             
         }
     }
