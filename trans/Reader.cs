@@ -30,12 +30,17 @@ namespace trans
                     
                     if (reader.GetValue(0) != null && reader.GetValue(1) != null)
                     {
-                        System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
+                       string old_value = reader.GetValue(0).ToString();
+                       string new_value = reader.GetValue(1).ToString();
+                       // System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
                         ReadAndReplace(
-                          //output[0],
-                          //output[1],
-                          reader.GetValue(0).ToString(),
-                          standarize(reader.GetValue(0).ToString(),reader.GetValue(1).ToString()),
+                         //output[0],
+                         //output[1],
+                        standarize_pattern( old_value),
+                        standarize_pattern( new_value ),
+                         //standarize(old_value,new_value),
+                         //reader.GetValue(0).ToString(),
+                        // reader.GetValue(1).ToString(),
                           target_path
                           //true
                           );
@@ -50,23 +55,36 @@ namespace trans
 
 
         }
+        private string standarize_pattern(string quo)
+        {
+            
+            string buffer = quo;
+            while (buffer.Substring(0,1)==" ")
+            {
+
+                buffer = quo.Remove(0,1);
+            }
+
+            return buffer;
+        }
         private string standarize(string standard, string data)
         {
             string s = "";
             if (standard.Contains("\"") && data.Contains("\'"))
             {
 
-                data.Replace("\'", "\"");
+               s= data.Replace("\'", "\"");
             }
 
             if (standard.Contains("\'") && data.Contains("\""))
             {
-
-                data.Replace("\"", "\'");
+               
+               s= data.Replace("\"", "\'");
             }
-            s = data;
+            
             return s;
         }
+       
         private string [] ExcelReader(string excel_path)
 
         {
@@ -96,7 +114,7 @@ namespace trans
         private void ReadAndReplace(string word, string replacement, string filePath)
         {
 
-            var fileText = "";
+           // var fileText = "";
             string con = "";
             // int row_count = 0;
            bool value_changed = false;
@@ -122,13 +140,18 @@ namespace trans
             //System.Diagnostics.Trace.WriteLine(row_count);
 
             string text="";
+            int w_count = word.Count();
+            int r_count = replacement.Count();
             StreamReader sr = new StreamReader(filePath);
             while ((con = sr.ReadLine())!=null)
                 {                   
                 
                 if (con.Contains(word) && value_changed == false)
                 {
-                    con = con.Replace(word, replacement);
+                   int con_index= con.LastIndexOf(word);
+                   // con = con.Replace(word, replacement);
+                    con = con.Remove(con_index,w_count);
+                    con = con.Insert(con_index,replacement);
                     value_changed = true;
 
                 }
