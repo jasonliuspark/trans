@@ -13,6 +13,13 @@ namespace trans
     public class Reader
     {
 
+       public Reader()
+
+        {
+
+
+
+        }
         public Reader(string excel_path, string target_path)
         {
            // string[] output = new string[2];
@@ -118,7 +125,12 @@ namespace trans
             
             return s;
         }
-
+        /// <summary>
+        /// quotation standarize
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
 
         private string non_quo_standerize(string type, string data)
 
@@ -145,22 +157,46 @@ namespace trans
             return data;
 
         }
-        private string [] ExcelReader(string excel_path)
+
+        /// <summary>
+        /// script writer
+        /// </summary>
+        /// <param name="script_file"></param>
+        /// <param name="excel_path"></param>
+        public void ExcelReader(string script_file,string excel_path)
 
         {
-            string[] output =new string [2]; 
+            
+             
             var stream = File.Open(excel_path, FileMode.Open, FileAccess.Read);
             var reader = ExcelReaderFactory.CreateReader(stream);
-            
-            var output_test = reader.Read();
-            
-            output[0] = reader.GetValue(0).ToString();
-            output[1] = reader.GetValue(1).ToString();
+            var script_generater = new SqlScriptGenerator();
+            do
+            {
+                while (reader.Read())
+                {
+                    string[] output =new string [4];
+                    string sheet_name = reader.Name;
+                    string sql_script = "";
+                    string[] sArray = sheet_name.Split('.');
+                    // get original string and translated source
+                    output[0] = reader.GetValue(0).ToString();
+                    output[1] = reader.GetValue(1).ToString();
+                    //split sheet name to table name and column name
+                    output[2] = sArray[0];
+                    output[3] = sArray[1];
+                    System.Diagnostics.Trace.WriteLine(sArray[0]);
+                    System.Diagnostics.Trace.WriteLine(sArray[1]);
+                    SqlScriptGenerator sq_gen = new SqlScriptGenerator();
+                    sql_script=sq_gen.ScriptGenerator(output);
+                    TextWriter tw = new StreamWriter(script_file,true);
+                    tw.WriteLine(sql_script);
+                    tw.Close();
 
-            System.Diagnostics.Trace.WriteLine(reader.GetValue(0));
-            System.Diagnostics.Trace.WriteLine(reader.GetValue(1));
-           
-            return output;
+                }
+            } while (reader.NextResult());
+
+            stream.Close();
         }
 
         

@@ -63,6 +63,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
+    <Compile Include="FileCreater.cs" />
+    <Compile Include="SqlScriptGenerator.cs" />
     <EmbeddedResource Include="Main_Trans.resx">
       <DependentUpon>Main_Trans.cs</DependentUpon>
     </EmbeddedResource>
