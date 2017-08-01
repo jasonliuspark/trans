@@ -15,13 +15,9 @@ namespace trans
 
         public Reader(string excel_path, string target_path)
         {
-            string[] output = new string[2];
+           // string[] output = new string[2];
             var stream = File.Open(excel_path, FileMode.Open, FileAccess.Read);
-            var reader = ExcelReaderFactory.CreateReader(stream);
-
-
-        
-
+            var reader = ExcelReaderFactory.CreateReader(stream);      
             do
             {
                 while (reader.Read())
@@ -51,7 +47,40 @@ namespace trans
 
             stream.Close();
             //return output;
+        }
+        public Reader(string excel_path, string target_path,string type)
+        {
 
+            var stream = File.Open(excel_path, FileMode.Open, FileAccess.Read);
+            var reader = ExcelReaderFactory.CreateReader(stream);
+            do
+            {
+                while (reader.Read())
+                {
+
+
+                    if (reader.GetValue(0) != null && reader.GetValue(1) != null)
+                    {
+                        string old_value = non_quo_standerize( type,reader.GetValue(0).ToString());
+                        string new_value = non_quo_standerize( type,reader.GetValue(1).ToString());
+                        // System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
+                        ReadAndReplace(
+                         //output[0],
+                         //output[1],
+                         old_value,
+                         new_value,
+                          //  standarize(old_value,new_value),
+                          // reader.GetValue(0).ToString(),
+                          //reader.GetValue(1).ToString(),
+                          target_path
+                          //true
+                          );
+                        //System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
+                    }
+                }
+            } while (reader.NextResult());
+
+            stream.Close();
 
 
         }
@@ -89,7 +118,33 @@ namespace trans
             
             return s;
         }
-       
+
+
+        private string non_quo_standerize(string type, string data)
+
+        {
+            switch (type)
+            {
+                case "\'":
+                    {   
+                        data = data.Trim();
+                        int index = data.Count();
+                        data = data.Insert(0,"\'");
+                        data = data.Insert(index+1, "\'");
+                        break;
+                    }  
+                case "\"":
+                    {
+                        data = data.Trim();
+                        int index = data.Count();
+                        data = data.Insert(0,"\"");
+                        data = data.Insert(index+1,"\"");
+                        break;
+                    } 
+            }
+            return data;
+
+        }
         private string [] ExcelReader(string excel_path)
 
         {
@@ -108,13 +163,7 @@ namespace trans
             return output;
         }
 
-        /*public void ReadTargetFile(string target_path)
-
-        {
-
-            var stream2 = File.Open(target_path, FileMode.Open, FileAccess.ReadWrite);
-
-        } */
+        
 
         private void ReadAndReplace(string word, string replacement, string filePath)
         {

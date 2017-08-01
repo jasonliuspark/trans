@@ -72,16 +72,26 @@ namespace trans
         {
 
             Reader read = new Reader(excel_path.Text,target_path.Text);
-          /*  string [] output_result = new string[2];
-            output_result = read.ExcelReader(excel_path.Text);
-            read.ReadAndReplace(
-                output_result[0],
-                output_result[1],
-                target_path.Text,                    
-                true
-                );
-            */
           
+          
+        }
+        
+          private void Trans_Non_Quo_Button_Click(object sender, EventArgs e)
+        {
+
+            Reader read = new Reader(excel_path.Text, target_path.Text,quotation_choose.Text);
+
+
+        }
+
+        private void Main_Trans_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quotation_choose_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
