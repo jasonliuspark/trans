@@ -70,18 +70,28 @@ namespace trans
 
         private void Transfer_Button_Click(object sender, EventArgs e)
         {
+            if (Excel_path.Text != "" && Target_path.Text != "")
+            {
+                Reader read = new Reader(Excel_path.Text, Target_path.Text);
+            }
+            else
+            {
+                MessageBox.Show("please select the right source and target ");
 
-            Reader read = new Reader(Excel_path.Text,Target_path.Text);
-          
-          
+            }
+
         }
         
           private void Trans_Non_Quo_Button_Click(object sender, EventArgs e)
         {
+            if (Excel_path.Text != "" && Target_path.Text != "")
+            {
+                Reader read = new Reader(Excel_path.Text, Target_path.Text, Quotation_choose.Text);
+            }
 
-            Reader read = new Reader(Excel_path.Text, Target_path.Text,Quotation_choose.Text);
-
-
+            else {
+                MessageBox.Show("please select the right source and target ");
+            }
         }
 
         private void Main_Trans_Load(object sender, EventArgs e)
@@ -132,16 +142,28 @@ namespace trans
 
         private void Script_generate_button_Click(object sender, EventArgs e)
         {
-            //script source
-            string script_source =Script_source_text.Text;
-            //script destination
-            string script_file = Script_destination_text.Text;
-            FileCreater file = new FileCreater(script_file);
 
-            Reader read = new Reader();
+            if (Script_source_text.Text != "" && Script_destination_text.Text != "")
+            {
+                //script source
+                string script_source = Script_source_text.Text;
+                //script destination
+                string script_file = Script_destination_text.Text;
+                FileCreater file = new FileCreater(script_file);
 
-            read.ExcelReader(script_file,script_source);
+                Reader read = new Reader();
 
+                read.ExcelReader(script_file, script_source);
+
+            }
+            else
+            {
+
+                MessageBox.Show("please select the right sourece and target file");
+
+
+            }
+            
         }
     }
 }
