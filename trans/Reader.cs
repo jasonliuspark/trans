@@ -100,10 +100,11 @@ namespace trans
             {
                 if (buffer.Contains("\'"))
                 { buffer = buffer.Insert(0, " \'"); }
-                else
-                {
-                    buffer = buffer.Insert(0," ");
-                }
+                buffer = buffer.Insert(0," ");
+            }
+            else
+            {
+                buffer = buffer.Insert(0, " ");
             }
 
             return buffer;
@@ -184,6 +185,8 @@ namespace trans
                     output[1] = reader.GetValue(1).ToString();
                     //split sheet name to table name and column name
                     output[2] = sArray[0];
+                    if (sArray[1] == "Descriptio")
+                    { sArray[1] = sArray[1] + "n"; }
                     output[3] = sArray[1];
                     System.Diagnostics.Trace.WriteLine(sArray[0]);
                     System.Diagnostics.Trace.WriteLine(sArray[1]);
