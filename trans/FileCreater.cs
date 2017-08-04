@@ -14,7 +14,9 @@ namespace trans
         {
             //string full_path=Path.Combine(save_path,script_file_name);
 
-            File.Create(script_file_name);                                
+            using (File.Create(script_file_name)) { }; 
+            
+            
         }
      //  public 
 

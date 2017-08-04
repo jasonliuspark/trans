@@ -24,8 +24,8 @@ namespace trans
             string table_name = input_source[2];
             //hard coded syntax
             string command = "update ";
-            string syntax = " set " + input_source[3] + "= \'" + input_source[1] + "\'" + "where " + input_source[3] + "=" + input_source[0];
-            sqlscript =command + db + table_name + syntax;
+            string syntax = " set " + input_source[3] + " = \'" + input_source[1] + "\'" + " where " + input_source[3] + " = \'" + input_source[0]+"\'";
+            sqlscript =command + db + table_name + syntax + "\r\n";
             return sqlscript;
         }
 

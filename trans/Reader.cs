@@ -100,12 +100,10 @@ namespace trans
             {
                 if (buffer.Contains("\'"))
                 { buffer = buffer.Insert(0, " \'"); }
-                buffer = buffer.Insert(0," ");
+
+                else { buffer = buffer.Insert(0, " "); }
             }
-            else
-            {
-                buffer = buffer.Insert(0, " ");
-            }
+           
 
             return buffer;
         }
