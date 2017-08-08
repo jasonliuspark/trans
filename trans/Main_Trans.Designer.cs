@@ -41,21 +41,24 @@
             this.Script_source = new System.Windows.Forms.Button();
             this.quotation_type_labe = new System.Windows.Forms.Label();
             this.Script_generate_button = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Replacement_Lable = new System.Windows.Forms.Label();
+            this.Script_Lable = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Excel_button
             // 
-            this.Excel_button.Location = new System.Drawing.Point(421, 193);
+            this.Excel_button.Location = new System.Drawing.Point(448, 77);
             this.Excel_button.Name = "Excel_button";
             this.Excel_button.Size = new System.Drawing.Size(136, 23);
             this.Excel_button.TabIndex = 0;
-            this.Excel_button.Text = "open excel";
+            this.Excel_button.Text = "open source excel";
             this.Excel_button.UseVisualStyleBackColor = true;
             this.Excel_button.Click += new System.EventHandler(this.Open_Excel);
             // 
             // Target_button
             // 
-            this.Target_button.Location = new System.Drawing.Point(421, 98);
+            this.Target_button.Location = new System.Drawing.Point(136, 78);
             this.Target_button.Name = "Target_button";
             this.Target_button.Size = new System.Drawing.Size(136, 23);
             this.Target_button.TabIndex = 1;
@@ -65,7 +68,7 @@
             // 
             // Target_path
             // 
-            this.Target_path.Location = new System.Drawing.Point(392, 58);
+            this.Target_path.Location = new System.Drawing.Point(107, 46);
             this.Target_path.Name = "Target_path";
             this.Target_path.Size = new System.Drawing.Size(191, 21);
             this.Target_path.TabIndex = 2;
@@ -73,7 +76,7 @@
             // 
             // Excel_path
             // 
-            this.Excel_path.Location = new System.Drawing.Point(392, 166);
+            this.Excel_path.Location = new System.Drawing.Point(424, 46);
             this.Excel_path.Name = "Excel_path";
             this.Excel_path.Size = new System.Drawing.Size(191, 21);
             this.Excel_path.TabIndex = 3;
@@ -81,7 +84,7 @@
             // 
             // Transfer_Button
             // 
-            this.Transfer_Button.Location = new System.Drawing.Point(407, 323);
+            this.Transfer_Button.Location = new System.Drawing.Point(435, 158);
             this.Transfer_Button.Name = "Transfer_Button";
             this.Transfer_Button.Size = new System.Drawing.Size(165, 55);
             this.Transfer_Button.TabIndex = 4;
@@ -91,7 +94,7 @@
             // 
             // Trans_non_quo_botton
             // 
-            this.Trans_non_quo_botton.Location = new System.Drawing.Point(115, 323);
+            this.Trans_non_quo_botton.Location = new System.Drawing.Point(107, 158);
             this.Trans_non_quo_botton.Name = "Trans_non_quo_botton";
             this.Trans_non_quo_botton.Size = new System.Drawing.Size(191, 55);
             this.Trans_non_quo_botton.TabIndex = 5;
@@ -101,7 +104,7 @@
             // 
             // Quotation_choose
             // 
-            this.Quotation_choose.Location = new System.Drawing.Point(206, 291);
+            this.Quotation_choose.Location = new System.Drawing.Point(198, 126);
             this.Quotation_choose.Name = "Quotation_choose";
             this.Quotation_choose.Size = new System.Drawing.Size(100, 21);
             this.Quotation_choose.TabIndex = 6;
@@ -109,14 +112,14 @@
             // 
             // Script_destination_text
             // 
-            this.Script_destination_text.Location = new System.Drawing.Point(24, 85);
+            this.Script_destination_text.Location = new System.Drawing.Point(15, 305);
             this.Script_destination_text.Name = "Script_destination_text";
             this.Script_destination_text.Size = new System.Drawing.Size(152, 21);
             this.Script_destination_text.TabIndex = 7;
             // 
             // Script_save_destination
             // 
-            this.Script_save_destination.Location = new System.Drawing.Point(188, 83);
+            this.Script_save_destination.Location = new System.Drawing.Point(179, 303);
             this.Script_save_destination.Name = "Script_save_destination";
             this.Script_save_destination.Size = new System.Drawing.Size(168, 23);
             this.Script_save_destination.TabIndex = 10;
@@ -126,14 +129,14 @@
             // 
             // Script_source_text
             // 
-            this.Script_source_text.Location = new System.Drawing.Point(24, 131);
+            this.Script_source_text.Location = new System.Drawing.Point(374, 303);
             this.Script_source_text.Name = "Script_source_text";
             this.Script_source_text.Size = new System.Drawing.Size(152, 21);
             this.Script_source_text.TabIndex = 9;
             // 
             // Script_source
             // 
-            this.Script_source.Location = new System.Drawing.Point(206, 131);
+            this.Script_source.Location = new System.Drawing.Point(556, 303);
             this.Script_source.Name = "Script_source";
             this.Script_source.Size = new System.Drawing.Size(143, 23);
             this.Script_source.TabIndex = 11;
@@ -144,7 +147,7 @@
             // quotation_type_labe
             // 
             this.quotation_type_labe.AutoSize = true;
-            this.quotation_type_labe.Location = new System.Drawing.Point(31, 295);
+            this.quotation_type_labe.Location = new System.Drawing.Point(23, 130);
             this.quotation_type_labe.Name = "quotation_type_labe";
             this.quotation_type_labe.Size = new System.Drawing.Size(155, 12);
             this.quotation_type_labe.TabIndex = 12;
@@ -153,7 +156,7 @@
             // 
             // Script_generate_button
             // 
-            this.Script_generate_button.Location = new System.Drawing.Point(115, 179);
+            this.Script_generate_button.Location = new System.Drawing.Point(292, 357);
             this.Script_generate_button.Name = "Script_generate_button";
             this.Script_generate_button.Size = new System.Drawing.Size(115, 23);
             this.Script_generate_button.TabIndex = 13;
@@ -161,11 +164,43 @@
             this.Script_generate_button.UseVisualStyleBackColor = true;
             this.Script_generate_button.Click += new System.EventHandler(this.Script_generate_button_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(34, 236);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(645, 10);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            // 
+            // Replacement_Lable
+            // 
+            this.Replacement_Lable.AutoSize = true;
+            this.Replacement_Lable.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Replacement_Lable.Location = new System.Drawing.Point(289, 9);
+            this.Replacement_Lable.Name = "Replacement_Lable";
+            this.Replacement_Lable.Size = new System.Drawing.Size(152, 16);
+            this.Replacement_Lable.TabIndex = 15;
+            this.Replacement_Lable.Text = "String Replacement";
+            // 
+            // Script_Lable
+            // 
+            this.Script_Lable.AutoSize = true;
+            this.Script_Lable.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Script_Lable.Location = new System.Drawing.Point(265, 253);
+            this.Script_Lable.Name = "Script_Lable";
+            this.Script_Lable.Size = new System.Drawing.Size(200, 16);
+            this.Script_Lable.TabIndex = 16;
+            this.Script_Lable.Text = "Update Script Generation";
+            this.Script_Lable.Click += new System.EventHandler(this.label2_Click);
+            // 
             // Main_Trans
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 403);
+            this.ClientSize = new System.Drawing.Size(708, 394);
+            this.Controls.Add(this.Script_Lable);
+            this.Controls.Add(this.Replacement_Lable);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Script_generate_button);
             this.Controls.Add(this.quotation_type_labe);
             this.Controls.Add(this.Script_source);
@@ -202,6 +237,9 @@
         private System.Windows.Forms.Button Script_source;
         private System.Windows.Forms.Label quotation_type_labe;
         private System.Windows.Forms.Button Script_generate_button;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label Replacement_Lable;
+        private System.Windows.Forms.Label Script_Lable;
     }
 }
 

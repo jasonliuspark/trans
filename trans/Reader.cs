@@ -34,7 +34,7 @@ namespace trans
                     if (reader.GetValue(0) != null && reader.GetValue(1) != null)
                     {
                        string old_value = reader.GetValue(0).ToString();
-                       string new_value = standarize_pattern( reader.GetValue(1).ToString());
+                       string new_value = standarize_pattern( reader.GetValue(1).ToString());                      
                        // System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
                         ReadAndReplace(
                          //output[0],
@@ -103,8 +103,8 @@ namespace trans
 
                 else { buffer = buffer.Insert(0, " "); }
             }
-           
 
+            //buffer = buffer.Replace("\''","\"");
             return buffer;
         }
         private string standarize(string standard, string data)
