@@ -39,7 +39,7 @@ namespace trans
                         ReadAndReplace(
                          //output[0],
                          //output[1],
-                         old_value,
+                       For_source_non_quo(  old_value),
                        standarize( old_value, new_value),
                        //  standarize(old_value,new_value),
                         // reader.GetValue(0).ToString(),
@@ -107,6 +107,19 @@ namespace trans
             //buffer = buffer.Replace("\''","\"");
             return buffer;
         }
+
+        private string For_source_non_quo(string s)
+        {
+            if (!s.Contains("\'") && !s.Contains("\""))
+            {
+                s = s.Trim();
+                int index = s.Count();
+                s = s.Insert(0, "\"");
+                s = s.Insert(index + 1, "\"");
+
+            }
+            return s;
+        }
         private string standarize(string standard, string data)
         {
             string s = data;
@@ -121,7 +134,15 @@ namespace trans
                
                s= data.Replace("\"", "\'");
             }
-            
+
+            if (!standard.Contains("\'") && !standard.Contains("\""))
+            {
+                s = s.Trim();
+                int index = s.Count();
+                s = s.Insert(0, "\"");
+                s = s.Insert(index + 1, "\"");
+
+            }
             return s;
         }
         /// <summary>
@@ -159,7 +180,7 @@ namespace trans
 
         /// <summary>
         /// script writer
-        /// </summary>
+        /// </summary> Reader for SQL update
         /// <param name="script_file"></param>
         /// <param name="excel_path"></param>
         public void ExcelReader(string script_file,string excel_path)
@@ -200,7 +221,8 @@ namespace trans
             stream.Close();
         }
 
-        
+
+      
 
         private void ReadAndReplace(string word, string replacement, string filePath)
         {

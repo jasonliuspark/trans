@@ -19,7 +19,11 @@ namespace trans
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// open source excel file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Open_Excel(object sender, EventArgs e)
         {
             OpenFileDialog open_exce_file = new OpenFileDialog();
@@ -47,12 +51,16 @@ namespace trans
         {
 
         }
-
+        /// <summary>
+        /// Open target file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Target_button_Click(object sender, EventArgs e)
         {
 
             OpenFileDialog open_target_file = new OpenFileDialog();
-            open_target_file.Multiselect = true;
+            open_target_file.Multiselect = false;
             open_target_file.Title = "please choose the target file";
             //open_target_file.Filter = "(*.xlsx)|*.xlsx";
             if (open_target_file.ShowDialog() == DialogResult.OK)
@@ -168,6 +176,21 @@ namespace trans
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void Test_Click(object sender, EventArgs e)
+        {
+
+            if (Excel_path.Text != "" && Target_path.Text != "")
+            {
+                Reader read = new Reader(Excel_path.Text, Target_path.Text);
+            }
+            else
+            {
+                MessageBox.Show("please select the right source and target ");
+
+            }
 
         }
     }
