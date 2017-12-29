@@ -34,13 +34,15 @@ namespace trans
                     if (reader.GetValue(0) != null && reader.GetValue(1) != null)
                     {
                        string old_value = reader.GetValue(0).ToString();
-                       string new_value = standarize_pattern( reader.GetValue(1).ToString());                      
-                       // System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
+                        //string new_value = standarize_pattern( reader.GetValue(1).ToString());
+                        string new_value = reader.GetValue(1).ToString();
+                        // System.Diagnostics.Trace.WriteLine(standarize(reader.GetValue(0).ToString(), reader.GetValue(1).ToString()));
                         ReadAndReplace(
-                         //output[0],
-                         //output[1],
-                       For_source_non_quo(  old_value),
-                       standarize( old_value, new_value),
+                       //output[0],
+                       //output[1],
+                       For_source_non_quo(old_value),
+                      // standarize( old_value, new_value),
+                      franch(old_value,new_value),
                        //  standarize(old_value,new_value),
                         // reader.GetValue(0).ToString(),
                          //reader.GetValue(1).ToString(),
@@ -118,6 +120,16 @@ namespace trans
                 s = s.Insert(index + 1, "\"");
 
             }
+            return s;
+        }
+        private string franch(string standard, string data)
+        {
+            string s = data;
+            string raw = standard.Trim();
+
+            s =" "+raw.Substring(0,1)+s.Replace("\'","\\'")+raw.Substring(0,1)+",";
+
+
             return s;
         }
         private string standarize(string standard, string data)

@@ -76,21 +76,21 @@ namespace trans
 
         }
 
-        private void Transfer_Button_Click(object sender, EventArgs e)
-        {
-            if (Excel_path.Text != "" && Target_path.Text != "")
-            {
-                Reader read = new Reader(Excel_path.Text, Target_path.Text);
-            }
-            else
-            {
-                MessageBox.Show("please select the right source and target ");
+        //private void Transfer_Button_Click(object sender, EventArgs e)
+        //{
+        //    if (Excel_path.Text != "" && Target_path.Text != "")
+        //    {
+        //        Reader read = new Reader(Excel_path.Text, Target_path.Text);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("please select the right source and target ");
 
-            }
+        //    }
 
-        }
+        //}
         
-          private void Trans_Non_Quo_Button_Click(object sender, EventArgs e)
+      /*    private void Trans_Non_Quo_Button_Click(object sender, EventArgs e)
         {
             if (Excel_path.Text != "" && Target_path.Text != "")
             {
@@ -100,7 +100,7 @@ namespace trans
             else {
                 MessageBox.Show("please select the right source and target ");
             }
-        }
+        }*/
 
         private void Main_Trans_Load(object sender, EventArgs e)
         {

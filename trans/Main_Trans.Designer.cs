@@ -158,7 +158,7 @@
             this.Test_con.Name = "Test_con";
             this.Test_con.Size = new System.Drawing.Size(152, 23);
             this.Test_con.TabIndex = 17;
-            this.Test_con.Text = "Transfer";
+            this.Test_con.Text = "Replace";
             this.Test_con.UseVisualStyleBackColor = true;
             this.Test_con.Click += new System.EventHandler(this.Test_Click);
             // 
